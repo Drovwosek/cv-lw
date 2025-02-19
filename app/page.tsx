@@ -3,6 +3,7 @@ import { Code } from "@heroui/code";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
+import { User } from "@heroui/user";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
           </span>
         </Snippet>
       </div>
+      <User avatarProps={{src: siteConfig.data.user.avatar, size: 'lg'}} name={siteConfig.data.user.name} description={siteConfig.data.user.summary} />
     </section>
   );
 }
