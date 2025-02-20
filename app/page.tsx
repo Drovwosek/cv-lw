@@ -72,9 +72,7 @@ export default function Home() {
               <h3 className="font-medium">Hard Skills</h3>
               <div className="flex flex-wrap gap-2 mt-2">
                 {siteConfig.data.skills.hard.map((skill, i) => (
-                  
                   <Chip key={i}>{skill}</Chip>
-
                 ))}
               </div>
 
