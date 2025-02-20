@@ -1,33 +1,86 @@
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { User } from "@heroui/user";
+import Section from "@/components/section";
+import Header from "@/components/header";
+import { Link } from "@heroui/link";
+import { GithubIcon } from "@/components/icons";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
-        <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
-        </div>
-      </div>
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        <Header />
+        <Section title="Summary">
+          <p>{siteConfig.data.user.summary}</p>
+        </Section>
 
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
+        <Section title="Work Experience">
+          {siteConfig.data.experience.map((exp, i) => (
+            <div key={i} className="mb-6">
+              <h3 className="font-semibold text-lg">{exp.title}</h3>
+              <div className="flex justify-between">
+                <span>{exp.company}</span>
+                <span>{exp.date}</span>
+              </div>
+              <ul className="list-disc ml-6 mt-2">
+                {exp.points.map((point, j) => (
+                  <li key={j} className="mb-2">{point}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Section>
+
+        <Section title="Projects">
+          {siteConfig.data.projects.map((project, i) => (
+            <div key={i} className="mb-6">
+              <div className="flex justify-between">
+                <h3 className="font-semibold">{project.title}</h3>
+                
+                <Link isExternal aria-label="Github" href={project.link}>
+                  <GithubIcon className="text-default-500" />
+                </Link>
+              </div>
+              <ul className="list-disc ml-6 mt-2">
+                {project.points.map((point, j) => (
+                  <li key={j} className="mb-2">{point}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Section>
+
+        <Section title="Contact">
+          <div className="space-y-2">
+            <p>{siteConfig.data.contact.location}</p>
+            <p>{siteConfig.data.contact.phone}</p>
+            <a href={`mailto:${siteConfig.data.contact.email}`} className="text-blue-600 hover:underline">
+              {siteConfig.data.contact.email}
+            </a>
+            <br />
+            
+            <Link isExternal aria-label="Github" href={siteConfig.data.contact.github}>
+              <GithubIcon className="text-default-500" />
+              <p>GitHub Profile</p>
+            </Link>
+          </div>
+        </Section>
+
+        <Section title="Skills">
+          <div className="space-y-4">
+            <div>
+              <h3 className="font-medium">Hard Skills</h3>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {siteConfig.data.skills.hard.map((skill, i) => (
+                  <span key={i} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            {/* Add similar blocks for techniques and tools */}
+          </div>
+        </Section>
       </div>
-      <User avatarProps={{src: siteConfig.data.user.avatar, size: 'lg'}} name={siteConfig.data.user.name} description={siteConfig.data.user.summary} />
-    </section>
-  );
+    </div>
+  )
 }
