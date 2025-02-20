@@ -3,6 +3,7 @@ import Section from "@/components/section";
 import Header from "@/components/header";
 import { Link } from "@heroui/link";
 import { GithubIcon } from "@/components/icons";
+import { Chip } from "@heroui/chip";
 
 export default function Home() {
   return (
@@ -71,11 +72,12 @@ export default function Home() {
               <h3 className="font-medium">Hard Skills</h3>
               <div className="flex flex-wrap gap-2 mt-2">
                 {siteConfig.data.skills.hard.map((skill, i) => (
-                  <span key={i} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                    {skill}
-                  </span>
+                  
+                  <Chip key={i}>{skill}</Chip>
+
                 ))}
               </div>
+
             </div>
             {/* Add similar blocks for techniques and tools */}
           </div>
