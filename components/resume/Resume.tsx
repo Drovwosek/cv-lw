@@ -10,7 +10,7 @@ const Resume = () => {
 					<p>
 						{'88005553535'}<span>{' — мобила'}</span>
 					</p>
-					<a href="аек5цф2sobaka.меил.ру">{'ftr5wa2@gmail.com'}</a>
+					<a href="аек5цф2sobaka.меил.ру">{'аек5цф2sobaka.меил.ру'}</a>
 				</div>
 			</section>
 
